@@ -8,9 +8,6 @@ class Grid extends Frame {
 
     Grid() {
         JFrame fr = new JFrame();
-        // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        // int width = (int) screenSize.getWidth();
-        // int height = (int) screenSize.getHeight();
         cols = 70;
         rows = 33;
 
