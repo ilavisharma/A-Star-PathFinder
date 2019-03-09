@@ -3,7 +3,7 @@ import javax.swing.*;
 
 class Grid extends Frame {
     int rows, cols;
-    Button but[][];
+    GridCell cells[][];
     int x = 0, y = 0;
 
     Grid() {
@@ -16,12 +16,11 @@ class Grid extends Frame {
         fr.setLayout(null);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        but = new Button[cols][rows];
+        cells = new GridCell[cols][rows];
         for (int i = 0; i < cols; i++) {
             for (int j = 0; j < rows; j++) {
-                but[i][j] = new Button();
-                but[i][j].setBounds(x, y, 20, 20);
-                fr.add(but[i][j]);
+                cells[i][j] = new GridCell(x, y);
+                cells[i][j].addToFrame(fr);
                 if (x >= 1300) {
                     x = 0;
                     y = y + 20;
