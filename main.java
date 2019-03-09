@@ -1,7 +1,9 @@
 import java.awt.*;
+import java.awt.event.*;
+
 import javax.swing.*;
 
-class Grid extends Frame {
+class Grid extends Frame implements ActionListener {
     int rows, cols;
     GridCell cells[][];
     int x = 0, y = 0;
@@ -31,10 +33,28 @@ class Grid extends Frame {
 
         JButton start = new JButton("Start");
         start.setBounds(10, y + 10, 100, 30);
+        start.addActionListener(this);
         fr.add(start);
 
         fr.setVisible(true);
     }
+
+    public void actionPerformed(ActionEvent e) {
+        // System.out.print("start pressed");
+    }
+
+    public void A_Star() {
+        GridCell start=cells[0][0];
+        GridCell end=cells[cols-1][rows-1];
+        // The set of nodes already evaluated
+        GridCell closedSet[];
+        // The set of currently discovered nodes that are not evaluated yet
+        GridCell openSet[];
+
+        
+
+    }
+
 }
 
 class DisplayFrame {
