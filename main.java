@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-
+import java.util.*;
 import javax.swing.*;
 
 class Grid extends Frame implements ActionListener {
@@ -44,14 +44,15 @@ class Grid extends Frame implements ActionListener {
     }
 
     public void A_Star() {
-        GridCell start=cells[0][0];
-        GridCell end=cells[cols-1][rows-1];
-        // The set of nodes already evaluated
-        GridCell closedSet[];
-        // The set of currently discovered nodes that are not evaluated yet
-        GridCell openSet[];
+        GridCell start = cells[0][0];
+        GridCell end = cells[cols - 1][rows - 1];
 
-        
+        // GridCell openSet[]= new GridCell[100];
+        // ArrayList<GridCell>
+
+        while (true) {
+
+        }
 
     }
 
