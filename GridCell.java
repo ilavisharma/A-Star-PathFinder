@@ -19,4 +19,8 @@ class GridCell {
   public void addNeighbor(GridCell cells[][]) {
 
   }
+
+  public void showColor(Color c) {
+    cell.setBackground(c);
+  }
 }
