@@ -1,11 +1,14 @@
 import java.awt.*;
+import java.util.*;
 
 class GridCell {
   int xCod, yCod;
   Button cell;
-  GridCell neighbors[];
-  int f, g;
-  double h;
+  // GridCell neighbors[];
+  ArrayList<GridCell> neighbors = new ArrayList<GridCell>();
+  double g = 0, f = 0;
+  double h = 0;
+  GridCell pathVia;
 
   GridCell(int x, int y) {
     xCod = x;
@@ -18,11 +21,24 @@ class GridCell {
     frame.add(cell);
   }
 
-  public void addNeighbor(GridCell cells[][]) {
-
+  public void addNeighbor(GridCell cell) {
+    neighbors.add(cell);
   }
 
   public void showColor(Color c) {
     cell.setBackground(c);
+  }
+}
+
+class CellComparator implements Comparator<GridCell> {
+  // Overriding compare()method of Comparator
+  // for descending order
+  public int compare(GridCell first, GridCell second) {
+    if (first.f < second.f) {
+      return 1;
+    } else if (first.f > second.f) {
+      return -1;
+    }
+    return 0;
   }
 }
