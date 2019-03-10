@@ -1,12 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
 
 class Grid extends Frame implements ActionListener {
     int rows, cols;
     GridCell cells[][];
     int x = 0, y = 0;
+    GridCell start;
+    GridCell end;
 
     Grid() {
         JFrame fr = new JFrame();
@@ -18,6 +19,7 @@ class Grid extends Frame implements ActionListener {
         fr.setLayout(null);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // creating the grid
         cells = new GridCell[cols][rows];
         for (int i = 0; i < cols; i++) {
             for (int j = 0; j < rows; j++) {
@@ -40,26 +42,19 @@ class Grid extends Frame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        // System.out.print("start pressed");
+        A_Star();
     }
 
     public void A_Star() {
-        GridCell start = cells[0][0];
-        GridCell end = cells[cols - 1][rows - 1];
-
-        // GridCell openSet[]= new GridCell[100];
-        // ArrayList<GridCell>
-
-        while (true) {
-
-        }
+        start = cells[0][0];
+        end = cells[cols - 1][rows - 1];
 
     }
 
-}
+    public int getH(GridCell start, GridCell end) {
 
-class DisplayFrame {
-    public static void main(String[] args) {
-        Grid g1 = new Grid();
+        int x = (end.xCod - start.xCod) * (end.xCod - start.xCod);
+        int y = (end.yCod - start.yCod) * (end.yCod - start.yCod);
+        return (int) Math.sqrt(x + y);
     }
 }
