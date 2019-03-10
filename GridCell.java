@@ -4,6 +4,8 @@ class GridCell {
   int xCod, yCod;
   Button cell;
   GridCell neighbors[];
+  int f, g;
+  double h;
 
   GridCell(int x, int y) {
     xCod = x;
