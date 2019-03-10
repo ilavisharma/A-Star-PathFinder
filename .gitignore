@@ -3,3 +3,4 @@ Grid.class
 GridCell.class
 Array.class
 StartApp.class
+CellComparator.class
