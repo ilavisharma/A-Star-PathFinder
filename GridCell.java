@@ -8,7 +8,7 @@ class GridCell {
   ArrayList<GridCell> neighbors = new ArrayList<GridCell>();
   double g = 0, f = 0;
   double h = 0;
-  GridCell pathVia;
+  GridCell pathVia = null;
 
   GridCell(int x, int y) {
     xCod = x;
