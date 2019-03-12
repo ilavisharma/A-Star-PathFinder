@@ -79,31 +79,28 @@ class Grid extends Frame implements ActionListener {
 
     public void A_Star() {
         start = grid[0][0];
-        end = grid[11][21];
-
-        // update the h of each cell
-        // for (int i = 0; i < cols; i++) {
-        // for (int j = 0; j < rows; j++) {
-        // grid[i][j].h = getH(grid[i][j], end);
-
-        // }
-        // }
-
-        start.g = 0;
-        // start.h = getH(start, end);
-        // start.f = start.h + start.g;
+        end = grid[cols - 1][rows - 1];
 
         Stack<GridCell> closedSet = new Stack<GridCell>();
         PriorityQueue<GridCell> openSet = new PriorityQueue<GridCell>(new CellComparator());
         // add start to the queue
+
+        start.f = getDistance(start, end);
         openSet.add(start);
 
-        while (openSet.size() > 0) {
+        while (!(openSet.size() == 0)) {
 
-            GridCell current = openSet.element();
+            GridCell current = openSet.peek();
 
             if (current == end) {
                 System.out.println("Completed");
+                System.out.println(current.xCod + "," + current.yCod);
+                System.out.println("f= " + current.f);
+                System.out.println("g= " + current.g);
+                System.out.println("h= " + current.h);
+                System.out.println("Completed");
+                current.showColor(Color.black);
+
                 return;
                 // fr.dispose();
 
@@ -125,23 +122,36 @@ class Grid extends Frame implements ActionListener {
                     openSet.add(neighbor);
                 }
 
-                else if (tentGScore >= neighbor.g) {
+                if (tentGScore >= neighbor.g) {
                     continue;
                 }
 
                 // this path is the best save it!
                 neighbor.pathVia = current;
+
                 neighbor.g = tentGScore;
                 neighbor.f = neighbor.g + getDistance(neighbor, end);
 
-                for (GridCell cell : closedSet) {
-                    cell.showColor(Color.red);
-                }
-                for (GridCell cell : openSet) {
-                    cell.showColor(Color.green);
-                }
-
             }
+            for (GridCell cell : closedSet) {
+                cell.showColor(Color.red);
+            }
+            for (GridCell cell : openSet) {
+                cell.showColor(Color.green);
+            }
+
+            // Stack<GridCell> path = new Stack<GridCell>();
+            // GridCell temp = current;
+            // path.push(temp);
+
+            // for (GridCell cell : path) {
+            // cell.showColor(Color.blue);
+            // }
+            // GridCell temp2 = current.pathVia;
+            // while (temp != null) {
+            // temp2.showColor(Color.blue);
+            // temp = temp2.pathVia;
+            // }
 
         }
 
